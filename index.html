@@ -3,90 +3,258 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JZ_X</title>
+<title>JZ_X — Minecraft 数据包作者</title>
+<meta name="description" content="JZ_X 的个人主页 — Minecraft 数据包开发与服务器部署">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background-color: #1a1a1a;
-    color: #fff;
-    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f8fafc;
+    --ink: #0f172a;
+    --ink-soft: #475569;
+    --ink-faint: #94a3b8;
+    --line: #e2e8f0;
+    --blue: #2563eb;
+    --blue-deep: #1d4ed8;
+    --blue-soft: #eff6ff;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(15,23,42,.04), 0 8px 24px -12px rgba(15,23,42,.12);
   }
-  .card { width: 100%; max-width: 520px; text-align: center; }
-  .avatar {
-    width: 84px; height: 84px; border-radius: 50%;
-    background: linear-gradient(135deg, #5a8f4e, #8fc47f);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; font-weight: bold; letter-spacing: 1px; color: #14210f;
-    margin: 0 auto 22px;
-    box-shadow: 0 0 0 4px #262626;
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+                 "Microsoft YaHei", system-ui, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- 顶部 ---------- */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: saturate(180%) blur(14px);
+    background: rgba(255,255,255,.82);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    max-width: 860px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .logo { font-weight: 700; letter-spacing: .06em; font-size: 15px; color: var(--ink); }
+  .logo span { color: var(--blue); }
+  .nav-links { display: flex; gap: 22px; font-size: 14px; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; transition: color .15s; }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 84px 0 56px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 13px; color: var(--blue-deep); background: var(--blue-soft);
+    border: 1px solid #dbeafe; border-radius: 999px;
+    padding: 5px 13px; margin-bottom: 22px; letter-spacing: .02em;
+  }
+  .eyebrow::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.15);
   }
   h1 {
-    font-size: 42px; color: #8fc47f; letter-spacing: 5px;
-    text-shadow: 2px 2px 0 #000;
+    font-size: clamp(40px, 7vw, 62px);
+    line-height: 1.05; letter-spacing: -.02em; font-weight: 800;
+    margin-bottom: 18px;
   }
-  .tagline { color: #888; margin: 12px 0 30px; font-size: 15px; }
-  .about {
-    background: #232323;
-    border: 1px solid #333;
-    border-radius: 12px;
-    padding: 22px 24px;
-    text-align: left;
-    margin-bottom: 26px;
+  h1 .grad {
+    background: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
-  .about h2 {
-    font-size: 13px; color: #5a8f4e; letter-spacing: 3px;
-    margin-bottom: 14px; text-transform: uppercase;
+  .lede {
+    font-size: 18px; color: var(--ink-soft); max-width: 560px;
   }
-  .about p { color: #ccc; line-height: 1.9; font-size: 15px; }
-  .about p + p { margin-top: 8px; color: #999; }
-  .links { display: flex; flex-direction: column; gap: 14px; }
+  .hero-actions { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
   .btn {
-    display: block; padding: 15px;
-    background: #262626; color: #fff; text-decoration: none;
-    border: 2px solid #3a3a3a; border-radius: 10px;
-    font-size: 16px; transition: 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 20px; border-radius: 10px;
+    font-size: 14.5px; font-weight: 500; text-decoration: none;
+    transition: .18s;
   }
-  .btn:hover {
-    background: #5a8f4e; border-color: #8fc47f;
-    transform: translateY(-2px);
+  .btn-primary { background: var(--blue); color: #fff; border: 1px solid var(--blue); }
+  .btn-primary:hover { background: var(--blue-deep); border-color: var(--blue-deep); transform: translateY(-1px); }
+  .btn-ghost { background: #fff; color: var(--ink); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: #cbd5e1; background: var(--bg-soft); transform: translateY(-1px); }
+
+  /* ---------- 区块 ---------- */
+  section { padding: 54px 0; border-top: 1px solid var(--line); }
+  .sec-label {
+    font-size: 12px; font-weight: 600; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink-faint); margin-bottom: 26px;
   }
-  .btn.secondary:hover { background: #b8860b; border-color: #ffd700; }
-  .mail {
-    display: inline-block; margin-top: 26px;
-    color: #777; font-size: 14px; text-decoration: none;
-    transition: 0.2s;
+  h2 { font-size: 26px; letter-spacing: -.01em; margin-bottom: 16px; font-weight: 700; }
+  .body-text { color: var(--ink-soft); font-size: 16px; max-width: 620px; }
+  .body-text + .body-text { margin-top: 12px; }
+
+  /* ---------- 项目卡 ---------- */
+  .project {
+    display: block; text-decoration: none; color: inherit;
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 26px 28px; box-shadow: var(--shadow);
+    transition: .2s;
   }
-  .mail:hover { color: #8fc47f; }
-  footer { margin-top: 34px; color: #444; font-size: 12px; letter-spacing: 1px; }
+  .project:hover { border-color: #c7d7f5; box-shadow: 0 2px 4px rgba(15,23,42,.05), 0 16px 36px -16px rgba(37,99,235,.28); transform: translateY(-2px); }
+  .project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+  .project h3 { font-size: 19px; font-weight: 650; margin-bottom: 6px; letter-spacing: -.01em; }
+  .project .sub { color: var(--ink-faint); font-size: 13.5px; }
+  .project p { color: var(--ink-soft); font-size: 15px; margin-top: 16px; }
+  .tags { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 18px; }
+  .tag {
+    font-size: 12px; color: var(--blue-deep); background: var(--blue-soft);
+    border: 1px solid #dbeafe; border-radius: 6px; padding: 3px 9px;
+  }
+  .go { color: var(--blue); font-size: 14px; font-weight: 500; white-space: nowrap; }
+
+  .placeholder {
+    margin-top: 16px; border: 1px dashed var(--line); border-radius: var(--radius);
+    padding: 22px; text-align: center; color: var(--ink-faint); font-size: 14px;
+    background: var(--bg-soft);
+  }
+
+  /* ---------- 技能 ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    font-size: 14px; color: var(--ink-soft);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 16px; background: #fff;
+  }
+
+  /* ---------- 联系 ---------- */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .contact {
+    display: flex; align-items: center; gap: 12px;
+    border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 18px 20px; text-decoration: none; color: inherit;
+    transition: .18s; background: #fff;
+  }
+  .contact:hover { border-color: #c7d7f5; background: var(--blue-soft); }
+  .contact .ico { font-size: 20px; }
+  .contact small { display: block; color: var(--ink-faint); font-size: 12.5px; }
+  .contact strong { font-weight: 550; font-size: 14.5px; }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 34px 0 46px;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--ink-faint); font-size: 13px; flex-wrap: wrap; gap: 10px;
+  }
+
+  @media (max-width: 620px) {
+    .hero { padding: 60px 0 44px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
 </style>
 </head>
 <body>
-<div class="card">
 
-  <div class="avatar">JZ</div>
-  <h1>JZ_X</h1>
-  <p class="tagline">JZ神的领域 · 欢迎来到我的网络空间</p>
+<header>
+  <nav class="nav">
+    <div class="logo">JZ<span>_</span>X</div>
+    <div class="nav-links">
+      <a href="#about">关于</a>
+      <a href="#projects">项目</a>
+      <a href="#contact">联系</a>
+    </div>
+  </nav>
+</header>
 
-  <div class="about">
+<main class="wrap">
+
+  <div class="hero">
+    <div class="eyebrow">Minecraft 数据包开发 · 服务器部署</div>
+    <h1>Hi, 我是 <span class="grad">JZ_X</span></h1>
+    <p class="lede">
+      喜欢折腾服务器，也喜欢研究《我的世界》服务器的部署与优化。
+      把想法做成能跑起来的东西，是我最享受的部分。
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">看看我的项目</a>
+      <a class="btn btn-ghost" href="https://github.com/jz-xbian" target="_blank" rel="noopener">GitHub 主页 ↗</a>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="sec-label">About</div>
     <h2>关于我</h2>
-    <p>喜欢折腾服务器，也喜欢研究《我的世界》服务器的部署。</p>
-    <p>从开服、调优到挡住那些扫描机器人，该踩的坑基本都踩过一遍。</p>
-  </div>
+    <p class="body-text">
+      我在 Minecraft 里主要做两件事：写数据包，和把服务器跑稳。
+      从自定义合成配方、掉落表这些玩法扩展，到开服、调优、长期稳定运行，一步一步摸过来的。
+    </p>
+    <p class="body-text">
+      喜欢把复杂的东西拆开搞明白，也喜欢最后交付一个「装上就能用」的成品。
+      项目都是开源的，代码和文档都放在 GitHub 上。
+    </p>
+  </section>
 
-  <div class="links">
-    <a href="https://jz-xbian.github.io/door-datapack/v1.1" class="btn">🚪 更高级的门合成数据包</a>
-    <a href="https://github.com/jz-xbian" class="btn secondary">💻 访问我的 GitHub 主页</a>
-  </div>
+  <section id="projects">
+    <div class="sec-label">Projects</div>
+    <h2>项目</h2>
 
-  <a class="mail" href="mailto:jaredzhang945@gmail.com">📮 jaredzhang945@gmail.com</a>
+    <a class="project" href="https://jz-xbian.github.io/door-datapack/v1.1">
+      <div class="project-top">
+        <div>
+          <h3>更高级的门合成</h3>
+          <div class="sub">Minecraft 数据包 · v1.1</div>
+        </div>
+        <div class="go">查看 →</div>
+      </div>
+      <p>
+        门与活板门的双向合成：一个木门可以拆成两个活板门，两个活板门也能重新拼回一扇门。
+        覆盖 12 种木材，服务端自动加载，玩家无需安装任何模组。
+      </p>
+      <div class="tags">
+        <span class="tag">Minecraft 26.2</span>
+        <span class="tag">合成配方</span>
+        <span class="tag">开源</span>
+      </div>
+    </a>
 
-  <footer>© 2026 JZ_X</footer>
+    <div class="placeholder">更多项目正在路上…</div>
+  </section>
 
-</div>
+  <section id="skills">
+    <div class="sec-label">Skills</div>
+    <h2>在用的东西</h2>
+    <div class="chips">
+      <span class="chip">Minecraft 数据包</span>
+      <span class="chip">服务器部署</span>
+      <span class="chip">Fabric</span>
+      <span class="chip">Linux / macOS</span>
+      <span class="chip">Git / GitHub</span>
+      <span class="chip">自动化脚本</span>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-label">Contact</div>
+    <h2>联系我</h2>
+    <div class="contact-grid">
+      <a class="contact" href="https://github.com/jz-xbian" target="_blank" rel="noopener">
+        <span class="ico">💻</span>
+        <span><small>GitHub</small><strong>@jz-xbian</strong></span>
+      </a>
+      <a class="contact" href="mailto:jaredzhang945@gmail.com">
+        <span class="ico">✉️</span>
+        <span><small>Email</small><strong>jaredzhang945@gmail.com</strong></span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 JZ_X</span>
+    <span>Built with plain HTML &amp; CSS</span>
+  </footer>
+
+</main>
+
 </body>
 </html>
