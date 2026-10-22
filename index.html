@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>JZ_X — Minecraft的一个普通玩家</title>
-<meta name="description" content="JZ_X 的个人主页 — Minecraft 项目研究与服务器部署">
+<title>JZ_X — Just an Ordinary Minecraft Player</title>
+<meta name="description" content="JZ_X — Minecraft projects and server deployment">
 <style>
   :root {
     --bg: #ffffff;
@@ -31,7 +31,7 @@
   }
   .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
 
-  /* ---------- 顶部 ---------- */
+  /* ---------- Header ---------- */
   header {
     position: sticky; top: 0; z-index: 10;
     backdrop-filter: saturate(180%) blur(14px);
@@ -85,7 +85,7 @@
   .btn-ghost { background: #fff; color: var(--ink); border: 1px solid var(--line); }
   .btn-ghost:hover { border-color: #cbd5e1; background: var(--bg-soft); transform: translateY(-1px); }
 
-  /* ---------- 区块 ---------- */
+  /* ---------- Sections ---------- */
   section { padding: 54px 0; border-top: 1px solid var(--line); }
   .sec-label {
     font-size: 12px; font-weight: 600; letter-spacing: .12em;
@@ -95,7 +95,7 @@
   .body-text { color: var(--ink-soft); font-size: 16px; max-width: 620px; }
   .body-text + .body-text { margin-top: 12px; }
 
-  /* ---------- 项目卡 ---------- */
+  /* ---------- Project card ---------- */
   .project {
     display: block; text-decoration: none; color: inherit;
     background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
@@ -120,7 +120,7 @@
     background: var(--bg-soft);
   }
 
-  /* ---------- 技能 ---------- */
+  /* ---------- Skills ---------- */
   .chips { display: flex; flex-wrap: wrap; gap: 10px; }
   .chip {
     font-size: 14px; color: var(--ink-soft);
@@ -128,7 +128,7 @@
     padding: 8px 16px; background: #fff;
   }
 
-  /* ---------- 联系 ---------- */
+  /* ---------- Contact ---------- */
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
   .contact {
     display: flex; align-items: center; gap: 12px;
@@ -160,9 +160,9 @@
   <nav class="nav">
     <div class="logo">JZ<span>_</span>X</div>
     <div class="nav-links">
-      <a href="#about">关于</a>
-      <a href="#projects">项目</a>
-      <a href="#contact">联系</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 </header>
@@ -170,70 +170,70 @@
 <main class="wrap">
 
   <div class="hero">
-    <div class="eyebrow">Minecraft 服务器部署</div>
-    <h1>Hi, 我是 <span class="grad">JZ_X</span></h1>
+    <div class="eyebrow">Minecraft Server Deployment</div>
+    <h1>Hi, I'm <span class="grad">JZ_X</span></h1>
     <p class="lede">
-      喜欢折腾服务器，也喜欢研究《我的世界》服务器的部署与优化。
+      I like tinkering with servers, and studying how Minecraft servers are deployed and tuned.
     </p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#projects">看看我的项目</a>
-      <a class="btn btn-ghost" href="https://github.com/jz-xbian" target="_blank" rel="noopener">GitHub 主页 ↗</a>
+      <a class="btn btn-primary" href="#projects">View my projects</a>
+      <a class="btn btn-ghost" href="https://github.com/jz-xbian" target="_blank" rel="noopener">GitHub ↗</a>
     </div>
   </div>
 
   <section id="about">
     <div class="sec-label">About</div>
-    <h2>关于我</h2>
+    <h2>About</h2>
     <p class="body-text">
-      喜欢玩Minecraft和研究Minecraft Server
+      I play Minecraft, and I study Minecraft servers.
     </p>
     <p class="body-text">
-      项目都是开源的，代码和文档都放在 GitHub 上。
+      Everything is open source — code and docs live on GitHub.
     </p>
   </section>
 
   <section id="projects">
     <div class="sec-label">Projects</div>
-    <h2>项目</h2>
+    <h2>Projects</h2>
 
     <a class="project" href="https://jz-xbian.github.io/door-datapack/v1.1">
       <div class="project-top">
         <div>
-          <h3>更高级的门合成</h3>
-          <div class="sub">Minecraft 数据包 · v1.1</div>
+          <h3>Advanced Door Crafting</h3>
+          <div class="sub">Minecraft Data Pack · v1.1</div>
         </div>
-        <div class="go">查看 →</div>
+        <div class="go">View →</div>
       </div>
       <p>
-        门与活板门的双向合成：一个木门可以拆成两个活板门，两个活板门也能重新拼回一扇门。
-        覆盖 12 种木材，服务端自动加载，玩家无需安装任何模组。
+        Two-way crafting between doors and trapdoors: one door splits into two trapdoors, and two trapdoors can be put back together into a door.
+        Covers 12 wood types. Loads server-side — players need no client mods.
       </p>
       <div class="tags">
         <span class="tag">Minecraft 26.2</span>
-        <span class="tag">合成配方</span>
-        <span class="tag">开源</span>
+        <span class="tag">Recipes</span>
+        <span class="tag">Open Source</span>
       </div>
     </a>
 
-    <div class="placeholder">更多项目正在路上…</div>
+    <div class="placeholder">More projects on the way…</div>
   </section>
 
   <section id="skills">
     <div class="sec-label">Skills</div>
-    <h2>在用的东西</h2>
+    <h2>Tech I Use</h2>
     <div class="chips">
-      <span class="chip">Minecraft 数据包</span>
-      <span class="chip">服务器部署</span>
+      <span class="chip">Minecraft Data Packs</span>
+      <span class="chip">Server Deployment</span>
       <span class="chip">Fabric</span>
       <span class="chip">windows / macOS</span>
       <span class="chip">Git / GitHub</span>
-      <span class="chip">自动化脚本</span>
+      <span class="chip">Automation Scripts</span>
     </div>
   </section>
 
   <section id="contact">
     <div class="sec-label">Contact</div>
-    <h2>联系我</h2>
+    <h2>Contact</h2>
     <div class="contact-grid">
       <a class="contact" href="https://github.com/jz-xbian" target="_blank" rel="noopener">
         <span class="ico">💻</span>
